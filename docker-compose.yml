@@ -10,7 +10,7 @@ services:
     volumes:
       - ./backend/database.db:/app/backend/database.db
     networks:
-      - traefik_proxy # Assumes you have a network named 'traefik_proxy' for Traefik
+      - traefik # Assumes you have a network named 'traefik_proxy' for Traefik
     # Labels for Traefik - uncomment and adapt to your domain
     # labels:
     #   - "traefik.enable=true"
@@ -28,7 +28,7 @@ services:
     depends_on:
       - backend
     networks:
-      - traefik_proxy
+      - traefik
     # Labels for Traefik - uncomment and adapt to your domain
     # labels:
     #   - "traefik.enable=true"
@@ -38,5 +38,5 @@ services:
     #   - "traefik.http.services.ph-frontend.loadbalancer.server.port=3000"
 
 networks:
-  traefik_proxy:
+  traefik:
     external: true
