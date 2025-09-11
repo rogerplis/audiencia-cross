@@ -1,0 +1,5 @@
+{
+  "name": "Public Hearing Registration",
+  "description": "An application for registering for a public hearing, with event details and a shareable confirmation.",
+  "requestFramePermissions": []
+}
