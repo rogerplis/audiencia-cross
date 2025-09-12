@@ -10,13 +10,41 @@ interface ShareScreenProps {
 }
 
 const ShareScreen: React.FC<ShareScreenProps> = ({ name, email, onReturn, pageUrl }) => {
-  const eventTitle = "Audiência Pública: O Futuro da Nossa Cidade";
-  const eventDetails = "Data: 30/08/2024, 19h. Local: Auditório Principal da Prefeitura.";
+  const eventTitle = "Audiência Pública: Sistema CROSS – Central de Regulação de Ofertas de Serviços de Saúde - Regional, transparente e mais eficiente!";
+  const eventDetails = "Data: 19/09/2025, 09:00h - 12:00h. Local: Plenário da Câmara Municipal de Araçatuba.";
   
-  const defaultShareText = `Olá! Estou participando da ${eventTitle}. É uma ótima oportunidade para discutirmos o futuro da nossa cidade. ${eventDetails} Inscreva-se também: ${pageUrl}. Conto com a sua presença!`;
+  const defaultShareText = `Convite Especial
+
+Olá, ${name} tudo bem?
+Você é nosso (a) convidado (a) para participar da:
+
+*Audiência Pública*
+*Sistema CROSS – Central de Regulação de Ofertas de Serviços de Saúde - Regional, transparente e mais eficiente!*
+
+🗓️ 19 de setembro de 2025
+🕘 09h00
+📍 Plenário da Câmara Municipal de Araçatuba - Praça Nove de Julho, nº 26 – Centro – Araçatuba/SP
+
+Sua presença é muito importante!
+
+Faça sua inscrição pelo link: ${pageUrl}`;
 
   const [emailBody, setEmailBody] = useState(
-    `Olá,\n\nEstou confirmado na ${eventTitle} e gostaria de te convidar.\n\nSerá uma discussão importante sobre os projetos de desenvolvimento urbano da nossa cidade.\n\n${eventDetails}\n\nPara se inscrever, acesse: ${pageUrl}\n\nEspero te ver lá!\n\nAbraços,\n${name}`
+    `Convite Especial
+
+Olá, ${name} tudo bem?
+Você é nosso (a) convidado (a) para participar da:
+
+Audiência Pública
+Sistema CROSS – Central de Regulação de Ofertas de Serviços de Saúde - Regional, transparente e mais eficiente!
+
+19 de setembro de 2025
+09h00
+Plenário da Câmara Municipal de Araçatuba - Praça Nove de Julho, nº 26 – Centro – Araçatuba/SP
+
+Sua presença é muito importante!
+
+Faça sua inscrição pelo link: ${pageUrl}`
   );
 
   const handleEmailShare = () => {
