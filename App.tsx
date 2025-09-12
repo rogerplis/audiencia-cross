@@ -74,10 +74,10 @@ const App: React.FC = () => {
       <div className="w-full max-w-4xl mx-auto">
         <header className="text-center mb-10">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-800 tracking-tight">
-            Audiência Pública: O Futuro da Nossa Cidade
+            Audiência Pública: Sistema Cross
           </h1>
           <p className="mt-4 text-lg text-gray-600">
-            Sua voz é fundamental para construirmos juntos um futuro melhor.
+            Regional, transparente e MAIS EFICIENTE
           </p>
         </header>
 

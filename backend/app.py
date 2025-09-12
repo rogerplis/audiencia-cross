@@ -3,13 +3,16 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # Isso habilitará o CORS para todas as rotas
-
-DATABASE = '/home/rogerio/dev/public-hearing-registration/backend/database.db'
+#CORS(app)  # Isso habilitará o CORS para todas as rotas
+CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "https://audienciacross.ngprjetos.com"]}})
+DATABASE = '/app/backend/database.db'
 
 def init_db():
     """Inicializa o banco de dados, cria e atualiza as tabelas conforme necessário."""
     with sqlite3.connect(DATABASE) as conn:
+        if not conn:
+            raise Exception("Não foi possível conectar ao banco de dados.")
+
         cursor = conn.cursor()
         # Tabela de inscrição inicial
         cursor.execute('''
@@ -66,15 +69,16 @@ def register():
     """Recebe os dados da inscrição inicial e salva no banco de dados."""
     try:
         data = request.get_json()
+        print(f"Dados recebidos na inscrição inicial: {data}")
         name = data.get('name')
         email = data.get('email')
         phone = data.get('phone')
         confirmed = bool(data.get('confirmed', False))
-
+        
         if not name or not email:
             return jsonify({'error': 'Nome e email são campos obrigatórios.'}), 400
 
-        with sqlite3.connect(DATABASE) as conn:
+        with sqlite3.connect(DATABASE) as conn:            
             cursor = conn.cursor()
             cursor.execute(
                 "INSERT INTO registrations (name, email, phone, confirmed) VALUES (?, ?, ?, ?)",
