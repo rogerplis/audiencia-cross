@@ -7,7 +7,7 @@ const EventDetails: React.FC = () => {
     <div>
       <h2 className="text-3xl font-bold text-gray-900 mb-6">Como será o evento</h2>
       <p className="text-gray-600 mb-8 leading-relaxed">
-        Esta audiência pública é uma oportunidade para todos os cidadãos expressarem suas opiniões e contribuírem para as decisões sobre os próximos projetos de desenvolvimento urbano. Teremos apresentações de especialistas, sessões de perguntas e respostas, e painéis de discussão abertos. Sua participação é crucial.
+        A Assembleia Legislativa do Estado de São Paulo (ALESP) realizará a Audiência Pública do Sistema CROSS (Central de Regulação de Ofertas de Serviços de Saúde) com o objetivo de discutir e construir, junto a municípios, gestores, profissionais da saúde, segmentos da sociedade organizada e a população em geral, propostas de melhorias que tornem o sistema CROSS: regional, transparente e mais eficiente.
       </p>
       <div className="space-y-6">
         <div className="flex items-start">
@@ -16,7 +16,7 @@ const EventDetails: React.FC = () => {
           </div>
           <div className="ml-4">
             <h3 className="text-lg font-semibold text-gray-800">Data</h3>
-            <p className="text-gray-600">30 de Agosto de 2024</p>
+            <p className="text-gray-600">19 de Setembro de 2025</p>
           </div>
         </div>
         <div className="flex items-start">
@@ -25,7 +25,7 @@ const EventDetails: React.FC = () => {
           </div>
           <div className="ml-4">
             <h3 className="text-lg font-semibold text-gray-800">Horário</h3>
-            <p className="text-gray-600">19:00h - 22:00h</p>
+            <p className="text-gray-600">09:00h - 12:00h</p>
           </div>
         </div>
         <div className="flex items-start">
@@ -34,8 +34,9 @@ const EventDetails: React.FC = () => {
           </div>
           <div className="ml-4">
             <h3 className="text-lg font-semibold text-gray-800">Local</h3>
-            <p className="text-gray-600">Auditório Principal da Prefeitura</p>
-            <p className="text-sm text-gray-500">Av. Principal, 123, Centro</p>
+            <p className="text-gray-600">Plenário da Câmara Municipal de Araçatuba
+</p>
+            <p className="text-sm text-gray-500">Praça Nove de Julho, nº 26 – Centro</p>
           </div>
         </div>
       </div>

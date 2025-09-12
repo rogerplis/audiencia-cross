@@ -144,7 +144,7 @@ const CompleteRegistrationForm: React.FC<CompleteRegistrationFormProps> = ({ use
     };
 
     try {
-      const response = await fetch('/api/complete-registration', {
+      const response = await fetch('https://audienciacross.ngprojetos.com/api/complete-registration', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dataToSend),
