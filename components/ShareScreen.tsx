@@ -13,38 +13,38 @@ const ShareScreen: React.FC<ShareScreenProps> = ({ name, email, onReturn, pageUr
   const eventTitle = "Audiência Pública: Sistema CROSS – Central de Regulação de Ofertas de Serviços de Saúde - Regional, transparente e mais eficiente!";
   const eventDetails = "Data: 19/09/2025, 09:00h - 12:00h. Local: Plenário da Câmara Municipal de Araçatuba.";
   
-  const defaultShareText = `Convite Especial
+  const defaultShareText = `*CONVITE ESPECIAL*
+Olá, tudo bem?
+Você é nosso(a) convidado(a) para participar da:
 
-Olá, ${name} tudo bem?
-Você é nosso (a) convidado (a) para participar da:
+*AUDIÊNCIA PÚBLICA – SISTEMA CROSS*
+Discutir e construir propostas para tornar o sistema regional, transparente e mais eficiente.
 
-*Audiência Pública*
-*Sistema CROSS – Central de Regulação de Ofertas de Serviços de Saúde - Regional, transparente e mais eficiente!*
+🗓️ 19/09/2025 – 9h
+📍 Plenário da Câmara Municipal de Araçatuba
+(Praça Nove de Julho, nº 26 – Centro)
 
-🗓️ 19 de setembro de 2025
-🕘 09h00
-📍 Plenário da Câmara Municipal de Araçatuba - Praça Nove de Julho, nº 26 – Centro – Araçatuba/SP
+*Participação com direito a certificado de AACC – Atividades Acadêmico, Científico e Culturais*
 
-Sua presença é muito importante!
-
-Faça sua inscrição pelo link: ${pageUrl}`;
+Vagas Limitadas.  Sua presença é muito importante!
+clique no link e faça sua inscrição: ${pageUrl}`;
 
   const [emailBody, setEmailBody] = useState(
-    `Convite Especial
+    `CONVITE ESPECIAL
+Olá, tudo bem?
+Você é nosso(a) convidado(a) para participar da:
 
-Olá, ${name} tudo bem?
-Você é nosso (a) convidado (a) para participar da:
+AUDIÊNCIA PÚBLICA – SISTEMA CROSS
+Discutir e construir propostas para tornar o sistema regional, transparente e mais eficiente.
 
-Audiência Pública
-Sistema CROSS – Central de Regulação de Ofertas de Serviços de Saúde - Regional, transparente e mais eficiente!
+19/09/2025 – 9h
+Plenário da Câmara Municipal de Araçatuba
+(Praça Nove de Julho, nº 26 – Centro)
 
-19 de setembro de 2025
-09h00
-Plenário da Câmara Municipal de Araçatuba - Praça Nove de Julho, nº 26 – Centro – Araçatuba/SP
+Participação com direito a certificado de AACC – Atividades Acadêmico, Científico e Culturais
 
-Sua presença é muito importante!
-
-Faça sua inscrição pelo link: ${pageUrl}`
+Vagas Limitadas.  Sua presença é muito importante!
+clique no link e faça sua inscrição: ${pageUrl}`
   );
 
   const handleEmailShare = () => {
