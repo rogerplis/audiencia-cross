@@ -2,13 +2,18 @@ from flask import Flask
 from flask_cors import CORS
 from routes import api_bp
 from db import init_db
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def create_app():
     """Cria e configura uma instância da aplicação Flask."""
     app = Flask(__name__)
     
     # Configura o CORS para permitir origens específicas
-    CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000", "https://audienciacross.ngprjetos.com"]}})
+    CORS(app, resources={r"/api/*": {
+        "origins": "*"
+    }})
     
     # Registra o Blueprint. Todas as rotas definidas no Blueprint
     # terão o prefixo '/api'. Ex: /register se torna /api/register.

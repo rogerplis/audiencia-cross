@@ -15,6 +15,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onRegisterSuccess }
   const [errors, setErrors] = useState<FormErrors>({});
   const [serverError, setServerError] = useState<string>('');
   const [isLoading, setIsLoading] = useState(false);
+  const BASE_URL = 'https://audienciacross.ngprojetos.com/api';
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
@@ -46,7 +47,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onRegisterSuccess }
     setIsLoading(true);
     try {
       // O backend deve estar rodando em http://127.0.0.1:5000
-      const response = await fetch('https://audienciacross.ngprojetos.com/api/register', {
+      const response = await fetch('http://localhost:5000/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -60,7 +61,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onRegisterSuccess }
       if (response.ok) {
         onRegisterSuccess({ name: formData.name, email: formData.email, confirmed: formData.confirmed });
       } else {
-        setServerError(data.message || 'Ocorreu um erro ao registrar. Tente novamente.');
+        setServerError(data.error || 'Ocorreu um erro ao registrar. Tente novamente.');
       }
     } catch (error) {
       console.error('Erro de rede ou servidor:', error);

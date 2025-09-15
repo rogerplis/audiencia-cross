@@ -1,14 +1,20 @@
 import psycopg2
 from flask import Blueprint, request, jsonify
 from db import get_db_connection
+from email_utils import send_registration_email
 
 # Cria um Blueprint. O primeiro argumento é o nome do Blueprint.
 # O segundo é o nome do módulo, usado para localizar recursos.
 api_bp = Blueprint('api', __name__)
 
+@api_bp.route('/ping', methods=['GET'])
+def ping():
+    """Rota de teste para verificar se o servidor está ativo."""
+    return jsonify({'message': 'Pong!'}), 200
+
 @api_bp.route('/register', methods=['POST'])
 def register():
-    """Recebe os dados da inscrição inicial e salva no banco de dados."""
+    """Recebe os dados da inscrição inicial, verifica se o email já existe e salva no banco de dados."""
     try:
         data = request.get_json()
         name = data.get('name')
@@ -21,11 +27,19 @@ def register():
 
         with get_db_connection() as conn:
             with conn.cursor() as cursor:
+                # Verifica se o email já está cadastrado
+                cursor.execute("SELECT id FROM registrations WHERE email = %s", (email,))
+                if cursor.fetchone():
+                    return jsonify({'error': 'Este email já está cadastrado.'}), 409
+                
+                # Insere o novo registro
                 cursor.execute(
                     "INSERT INTO registrations (name, email, phone, confirmed) VALUES (%s, %s, %s, %s)",
                     (name, email, phone, confirmed)
                 )
             conn.commit()
+
+        send_registration_email(email)
 
         return jsonify({'message': 'Inscrição realizada com sucesso!'}), 201
 

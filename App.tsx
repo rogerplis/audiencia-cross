@@ -1,5 +1,6 @@
 
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import EventDetails from './components/EventDetails';
 import RegistrationForm from './components/RegistrationForm';
 import ShareScreen from './components/ShareScreen';
@@ -12,6 +13,24 @@ const App: React.FC = () => {
   const [appState, setAppState] = useState<AppState>('REGISTRATION');
   const [registeredUser, setRegisteredUser] = useState({ name: '', email: '' });
   const pageUrl = window.location.href;
+
+  useEffect(() => {
+    const checkServerStatus = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/ping');
+        if (response.ok) {
+          const data = await response.json();
+          console.log('Server ping successful:', data.message);
+        } else {
+          console.error('Server ping failed: Received status', response.status);
+        }
+      } catch (error) {
+        console.error('Server ping failed: Could not connect to the server.', error);
+      }
+    };
+
+    checkServerStatus();
+  }, []);
 
   // Atualizado para receber 'confirmed' do formulário inicial
   const handleRegistrationSuccess = (userData: { name: string; email: string; confirmed: boolean }) => {
