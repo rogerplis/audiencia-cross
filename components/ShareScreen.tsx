@@ -24,7 +24,7 @@ Discutir e construir propostas para tornar o sistema regional, transparente e ma
 📍 Plenário da Câmara Municipal de Araçatuba
 (Praça Nove de Julho, nº 26 – Centro)
 
-*Participação com direito a certificado de AACC – Atividades Acadêmico, Científico e Culturais*
+*Participação com direito a certificado de AACC – Atividades Acadêmicas, Científicas e Culturais.*
 
 Vagas Limitadas.  Sua presença é muito importante!
 clique no link e faça sua inscrição: ${pageUrl}`;
@@ -37,11 +37,11 @@ Você é nosso(a) convidado(a) para participar da:
 AUDIÊNCIA PÚBLICA – SISTEMA CROSS
 Discutir e construir propostas para tornar o sistema regional, transparente e mais eficiente.
 
-19/09/2025 – 9h
-Plenário da Câmara Municipal de Araçatuba
+🗓️ 19/09/2025 – 9h
+📍Plenário da Câmara Municipal de Araçatuba
 (Praça Nove de Julho, nº 26 – Centro)
 
-Participação com direito a certificado de AACC – Atividades Acadêmico, Científico e Culturais
+Participação com direito a certificado de AACC – Atividades Acadêmicas, Científicas e Culturais.
 
 Vagas Limitadas.  Sua presença é muito importante!
 clique no link e faça sua inscrição: ${pageUrl}`
