@@ -107,23 +107,28 @@ def get_registrations():
     try:
         confirmed_param = request.args.get('confirmed')
         
-        query = "SELECT id, name, email, phone, confirmed, timestamp FROM registrations"
+        base_query = "FROM registrations"
         params = []
 
         if confirmed_param is not None:
             confirmed_value = confirmed_param.lower() == 'true'
-            query += " WHERE confirmed = %s"
+            base_query += " WHERE confirmed = %s"
             params.append(confirmed_value)
         
-        query += " ORDER BY timestamp DESC"
-
         with get_db_connection() as conn:
             with conn.cursor() as cursor:
-                cursor.execute(query, params)
+                # Get total count
+                count_query = "SELECT COUNT(*) " + base_query
+                cursor.execute(count_query, params)
+                count = cursor.fetchone()[0]
+
+                # Get registrations
+                select_query = "SELECT id, name, email, phone, confirmed, timestamp " + base_query + " ORDER BY timestamp DESC"
+                cursor.execute(select_query, params)
                 columns = [desc[0] for desc in cursor.description]
                 registrations = [dict(zip(columns, row)) for row in cursor.fetchall()]
         
-        return jsonify(registrations), 200
+        return jsonify({'count': count, 'registrations': registrations}), 200
 
     except psycopg2.Error as e:
         print(f"Erro de banco de dados em /registrations: {e}")
