@@ -1,0 +1,73 @@
+.dashboard-container {
+    padding: 2rem;
+    font-family: sans-serif;
+    background-color: #f4f7f6;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.error-message {
+    color: #d9534f;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.summary-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.summary-card h2 {
+    margin-top: 0;
+    color: #555;
+}
+
+.summary-card .count {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.table-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+.table-container h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.registrations-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.registrations-table th,
+.registrations-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.registrations-table th {
+    background-color: #f2f2f2;
+    font-weight: 600;
+    color: #333;
+}
+
+.registrations-table tbody tr:hover {
+    background-color: #f9f9f9;
+}

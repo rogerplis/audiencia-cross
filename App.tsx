@@ -1,48 +1,29 @@
 
 
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import EventDetails from './components/EventDetails';
 import RegistrationForm from './components/RegistrationForm';
 import ShareScreen from './components/ShareScreen';
-import CompleteRegistrationForm from './components/CompleteRegistrationForm'; // Importando o novo componente
+import CompleteRegistrationForm from './components/CompleteRegistrationForm';
+import Dashboard from './components/Dashboard'; // Importando o Dashboard
 
-// Definindo os estados da aplicação para um controle mais claro
 type AppState = 'REGISTRATION' | 'COMPLETE_REGISTRATION' | 'SHARE';
 
-const App: React.FC = () => {
+const MainPage: React.FC = () => {
   const [appState, setAppState] = useState<AppState>('REGISTRATION');
   const [registeredUser, setRegisteredUser] = useState({ name: '', email: '' });
   const pageUrl = window.location.href;
 
-  useEffect(() => {
-    const checkServerStatus = async () => {
-      try {
-        const response = await fetch('http://localhost:5000/api/ping');
-        if (response.ok) {
-          const data = await response.json();
-          console.log('Server ping successful:', data.message);
-        } else {
-          console.error('Server ping failed: Received status', response.status);
-        }
-      } catch (error) {
-        console.error('Server ping failed: Could not connect to the server.', error);
-      }
-    };
-
-    checkServerStatus();
-  }, []);
-
-  // Atualizado para receber 'confirmed' do formulário inicial
   const handleRegistrationSuccess = (userData: { name: string; email: string; confirmed: boolean }) => {
     setRegisteredUser({ name: userData.name, email: userData.email });
     if (userData.confirmed) {
-      setAppState('COMPLETE_REGISTRATION'); // Se confirmou, vai para o cadastro completo
+      setAppState('COMPLETE_REGISTRATION');
     } else {
-      setAppState('SHARE'); // Se não, vai direto para o compartilhamento
+      setAppState('SHARE');
     }
   };
 
-  // Função para avançar para a tela de compartilhamento após o cadastro completo
   const handleCompleteRegistrationSuccess = () => {
     setAppState('SHARE');
   };
@@ -109,6 +90,35 @@ const App: React.FC = () => {
         </footer>
       </div>
     </div>
+  );
+};
+
+const App: React.FC = () => {
+  useEffect(() => {
+    const checkServerStatus = async () => {
+      try {
+        const response = await fetch('/api/ping'); // Rota relativa para o proxy
+        if (response.ok) {
+          const data = await response.json();
+          console.log('Server ping successful:', data.message);
+        } else {
+          console.error('Server ping failed: Received status', response.status);
+        }
+      } catch (error) {
+        console.error('Server ping failed: Could not connect to the server.', error);
+      }
+    };
+
+    checkServerStatus();
+  }, []);
+
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
   );
 };
 
