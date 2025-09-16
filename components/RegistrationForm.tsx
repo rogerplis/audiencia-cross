@@ -47,7 +47,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onRegisterSuccess }
     setIsLoading(true);
     try {
       // O backend deve estar rodando em http://127.0.0.1:5000
-      const response = await fetch('http://localhost:5000/api/register', {
+      const response = await fetch('https://audienciacross.ngprojetos.com/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
